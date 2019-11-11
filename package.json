@@ -1,0 +1,33 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "An app that uses sql to capture user input then display the contents in one of two html tables",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArMc8234/burger.git"
+  },
+  "keywords": [
+    "burger",
+    "sql",
+    "handlebars",
+    "sequelize",
+    "express"
+  ],
+  "author": "Aaron McKoy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArMc8234/burger/issues"
+  },
+  "homepage": "https://github.com/ArMc8234/burger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql2": "^2.0.0",
+    "sequelize": "^5.21.2"
+  }
+}

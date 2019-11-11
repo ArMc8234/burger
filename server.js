@@ -1,0 +1,43 @@
+//Dependencies
+//=====================================
+var express = require("express");
+var exphbs = require("express-handlebars");
+
+
+//Set up Express Server
+//=====================================
+var app = express();
+var PORT = process.env.PORT || 8080;
+
+//Require the models to sync to the SQL database
+var db = require("./models");
+
+//Set up the Express app to be able to parse data
+app.use(express.urlencoded({extended: true}));
+app.use(express.json);
+
+//Static directory
+app.use(express.static("public"));
+
+//Set up app to use express-handlebars engine with a default layout that we'll call "main"
+//=========================================
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
+// Routes
+//======================================
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
+
+// require("./routes/html-routes.js")(app);
+
+app.get("/", function(req, res) {
+    res.render("index");
+});
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({}).then(function(){
+    app.listen(PORT, function(){
+        console.log("App listening on: http://localhost:"+ PORT);
+    });
+});

@@ -1,0 +1,43 @@
+{{!-- <div class="jumbotron" text-align="center"> --}}
+    {{!-- <i class="fas fa-hamburger"></i>
+    <h1>Eat Da Burger!</h1>
+</div> --}}
+
+<div class="row">
+    <div class ="col-sm-3">
+        </ul>
+        {{#each Burger}}
+            {{#unless is devoured}}
+                <li>
+                    <p><span class="newBurger"> {{this.id}}. {{this.name}}</span>   
+                        <button data-id="{{this.id}}" class="deleteItem">Devour</button>
+                    </p>    
+                </li>
+                {{/unless}}
+        {{/each}}
+        </ul>
+    </div>
+
+    <div class ="col-sm-3">
+        </ul>
+        {{#each Burger}}
+            {{#if is devoured}}
+                <li>
+                    <p><span class="newBurger"> {{this.id}}. {{this.name}}</span></p>    
+                </li>
+                {{/if}}
+        {{/each}}
+        </ul>
+    </div>
+</div>
+
+
+
+<form class="create-form">
+  <div class="form-group">
+    <label for="order">Place Your Order:</label>
+    <textarea id="order" name="order" rows="8" cols="40"></textarea>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
