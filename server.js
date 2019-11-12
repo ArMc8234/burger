@@ -14,29 +14,28 @@ var db = require("./models");
 
 //Set up the Express app to be able to parse data
 app.use(express.urlencoded({extended: true}));
-app.use(express.json);
+app.use(express.json());
 
 //Static directory
 app.use(express.static("public"));
 
 //Set up app to use express-handlebars engine with a default layout that we'll call "main"
 //=========================================
-app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Routes
 //======================================
-require("./routes/api-routes.js")(app);
+// require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
-// require("./routes/html-routes.js")(app);
+// app.get("/", function(req, res) {
+//     res.render('index');
+// });
 
-app.get("/", function(req, res) {
-    res.render("index");
-});
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({}).then(function(){
+db.sequelize.sync({force: true}).then(function(){
     app.listen(PORT, function(){
         console.log("App listening on: http://localhost:"+ PORT);
     });

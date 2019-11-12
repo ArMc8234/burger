@@ -2,6 +2,14 @@ body {
     background-color: darksalmon;
 };
 
+.jumbotron{
+    text-align: center;
+};
+
+i{
+    text-align: center;
+}
+
 li {
     background-color: rgba(7, 161, 182, 0.801);
     margin-bottom: 10px;

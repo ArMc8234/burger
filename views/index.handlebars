@@ -1,7 +1,7 @@
-{{!-- <div class="jumbotron" text-align="center"> --}}
-    {{!-- <i class="fas fa-hamburger"></i>
-    <h1>Eat Da Burger!</h1>
-</div> --}}
+<div class="jumbotron" >
+    <i class="fas fa-hamburger fa-10x" class="text-center"></i>
+    <h1 class="text-center" >Eat Da Burger!</h1>
+</div>
 
 <div class="row">
     <div class ="col-sm-3">
@@ -9,7 +9,7 @@
         {{#each Burger}}
             {{#unless is devoured}}
                 <li>
-                    <p><span class="newBurger"> {{this.id}}. {{this.name}}</span>   
+                    <p><span class="newBurger"> {{this.id}}. {{this.title}}</span>   
                         <button data-id="{{this.id}}" class="deleteItem">Devour</button>
                     </p>    
                 </li>
@@ -23,7 +23,7 @@
         {{#each Burger}}
             {{#if is devoured}}
                 <li>
-                    <p><span class="newBurger"> {{this.id}}. {{this.name}}</span></p>    
+                    <p><span class="newBurger"> {{this.id}}. {{this.title}}</span></p>    
                 </li>
                 {{/if}}
         {{/each}}
@@ -32,7 +32,8 @@
 </div>
 
 
-
+<div class="row">
+    <div class="col-sm-12">
 <form class="create-form">
   <div class="form-group">
     <label for="order">Place Your Order:</label>
@@ -41,3 +42,9 @@
 
   <button type="submit">Submit</button>
 </form>
+
+    </div>
+</div>
+
+
+
