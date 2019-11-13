@@ -2,49 +2,28 @@
     <i class="fas fa-hamburger fa-10x" class="text-center"></i>
     <h1 class="text-center" >Eat Da Burger!</h1>
 </div>
-
-<div class="row">
-    <div class ="col-sm-3">
-        </ul>
-        {{#each Burger}}
-            {{#unless is devoured}}
-                <li>
-                    <p><span class="newBurger"> {{this.id}}. {{this.title}}</span>   
-                        <button data-id="{{this.id}}" class="deleteItem">Devour</button>
-                    </p>    
-                </li>
-                {{/unless}}
-        {{/each}}
-        </ul>
-    </div>
-
-    <div class ="col-sm-3">
-        </ul>
-        {{#each Burger}}
-            {{#if is devoured}}
-                <li>
-                    <p><span class="newBurger"> {{this.id}}. {{this.title}}</span></p>    
-                </li>
-                {{/if}}
-        {{/each}}
-        </ul>
-    </div>
-</div>
-
-
-<div class="row">
-    <div class="col-sm-12">
-<form class="create-form">
-  <div class="form-group">
-    <label for="order">Place Your Order:</label>
-    <textarea id="order" name="order" rows="8" cols="40"></textarea>
-  </div>
-
-  <button type="submit">Submit</button>
-</form>
-
-    </div>
-</div>
-
-
-
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<ul class="list-group burgers-list">
+					<li class="list-group-item new-item">
+						<form id="burger-form">
+              <div class="container">
+                <div class="row">
+                  <div class="col-10">
+                    <input class="new-item form-control" placeholder="Add a burger" type="text" />
+                  </div>
+                  <div class="col-2">
+                    <button type="submit" class="btn btn-success">Add a burger</button>
+                  </div>
+                </div>
+              </div>
+						</form>
+					</li>
+					<span class="burger-container">
+					</span>
+				</ul>
+			</div>
+		</div>
+	</div>

@@ -31,7 +31,7 @@ module.exports = function(app) {
       title: req.body.order,
       devoured: false
     }).then(function(dbBurgers) {
- // We have access to the new todo as an argument inside of the callback function
+ // We have access to the new burgers as an argument inside of the callback function
       res.json(dbBurgers);
     })
       .catch(function(err) {

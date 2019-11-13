@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1, 100]
+                len: [1]
             }
         },
         //Column to capture state of the item
