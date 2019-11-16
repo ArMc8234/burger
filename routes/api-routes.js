@@ -13,13 +13,12 @@ var db = require("../models");
 module.exports = function(app) {
  // GET route for getting all of the table contents
 
-    app.get("/", function(req, res) {
+    app.get("/api/burgers", function(req, res) {
  // findAll returns all entries for a table when used with no options
-    db.Burgers.findAll({}).then(function(dbBurgers) {
+    db.Burger.findAll({}).then(function(dbBurger) {
 // We have access to the table data as an argument inside of the callback function
 // return res.json(dbBurgers);
-      res.render("index", {burgers: dbBurgers});
-      console.log("burgers in DB:", dbBurgers)
+      res.json(dbBurger);
     });
   });
 // POST route for saving a new table entry
@@ -27,12 +26,12 @@ module.exports = function(app) {
 // create takes an argument of an object describing the item we want to
 // insert into our table. In this case we just we pass in an object with a text
 // and complete property (req.body)
-    db.Burgers.create({
-      title: req.body.order,
-      devoured: false
-    }).then(function(dbBurgers) {
+    db.Burger.create({
+      title: req.body.title,
+      devoured: req.body.devoured
+    }).then(function(dbBurger) {
  // We have access to the new burgers as an argument inside of the callback function
-      res.json(dbBurgers);
+      res.json(dbBurger);
     })
       .catch(function(err) {
   // Whenever a validation or flag fails, an error is thrown
@@ -41,34 +40,20 @@ module.exports = function(app) {
       });
   });
 
-  // DELETE route for deleting table entries. We can get the id of the table row to be deleted from
-  // req.params.id
-  app.delete("/api/burgers/:id", function(req, res) {
-    // We just have to specify which table record we want to destroy with "where"
-    db.Burgers.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbBurgers) {
-      res.json(dbBurgers);
-    });
-
-  });
-
-  // PUT route for updating the database. We can get the updated data to insert from req.body
+  // PUT route for updating todos. We can get the updated todo data from req.body
   app.put("/api/burgers", function(req, res) {
 
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
-    db.Burgers.update({
-      title: req.body.order,
-      devoured: req.body.devoured
+    db.Burger.update({
+      title: req.body.title,
+      // complete: req.body.complete
     }, {
       where: {
         id: req.body.id
       }
-    }).then(function(dbBurgers) {
-      res.json(dbBurgers);
+    }).then(function(dbBurger) {
+      res.json(dbBurger);
     })
       .catch(function(err) {
       // Whenever a validation or flag fails, an error is thrown
@@ -76,4 +61,4 @@ module.exports = function(app) {
         res.json(err);
       });
   });
-};
+}

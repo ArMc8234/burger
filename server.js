@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 8080;
 var db = require("./models");
 
 //Set up the Express app to be able to parse data
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Static directory
@@ -29,9 +29,7 @@ app.set("view engine", "handlebars");
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
-// app.get("/", function(req, res) {
-//     res.render('index');
-// });
+;
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

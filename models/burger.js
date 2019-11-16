@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Burgers = sequelize.define("Burgers", {
+    var Burger = sequelize.define("Burger",  {
         //Column to hold burger name input
         title: {
             type: DataTypes.STRING,
@@ -11,16 +11,10 @@ module.exports = function(sequelize, DataTypes) {
         //Column to capture state of the item
         devoured: {
             type: DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: false
         }
-          //Column to capture entry timestamp
-        // createdAt: {
-        //     type: DataTypes.DATE,
-        //     defaultValue: Date.now()
-        // }
+              
     });
-    return Burgers;
-
- 
+        return Burger;
 };
  

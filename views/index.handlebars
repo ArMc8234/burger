@@ -1,24 +1,27 @@
-<div class="jumbotron" >
-    <i class="fas fa-hamburger fa-10x" class="text-center"></i>
-    <h1 class="text-center" >Eat Da Burger!</h1>
-</div>
-<body>
 	<div class="container">
+	<div class="jumbotron">
+		<div class="col-md-6 offset-md-3">
+			<h1 class="text-center">
+				<span class="fas fa-hamburger fa-3x  text-center"></span>
+			</h1></br>
+			<h1 class="text-center">Eat Da Burger!</h1>
+		</div>
+	</div>
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 				<ul class="list-group burgers-list">
 					<li class="list-group-item new-item">
 						<form id="burger-form">
-              <div class="container">
-                <div class="row">
-                  <div class="col-10">
-                    <input class="new-item form-control" placeholder="Add a burger" type="text" />
-                  </div>
-                  <div class="col-2">
-                    <button type="submit" class="btn btn-success">Add a burger</button>
-                  </div>
-                </div>
-              </div>
+					<div class="container">
+							<div class="row">
+								<div class="col-7bi">
+									<input class="new-item form-control" id="burgerInput" placeholder="Add a burger" type="text" />
+								</div>
+							<div class="col-2">
+								<button type="submit" class="btn btn-success" id="submit">Add a burger</button>
+							</div>
+						</div>
+					</div>
 						</form>
 					</li>
 					<span class="burger-container">
