@@ -3,6 +3,7 @@ $(document).ready(function() {
   var $newItemInput = $("input.new-item");
   // Our new burgers will go inside the burgersContainer
   var $burgerContainer = $(".burger-container");
+  var $burgerDevouredContainer = $(".burger-devoured-container");
 
   // Adding event listeners for deleting, editing, and adding burgerss
    $(document).on("submit", "#burger-form", insertBurgers);
@@ -16,16 +17,27 @@ $(document).ready(function() {
   // This function resets the burgerss displayed with new burgerss from the database
   function initializeRows() {
     $burgerContainer.empty();
+    $burgerDevouredContainer.empty();
     var rowsToAdd = [];
+    var devouredRowsToAdd = [];
     for (var i = 0; i < burgers.length; i++) {
-      rowsToAdd.push(createNewRow(burgers[i]));
+      console.log("readey to add:", burgers[i]);
+      if(burgers[i].devoured === false) {
+        rowsToAdd.push(createNewRow(burgers[i]));
+        $burgerContainer.append(rowsToAdd);
+      }
+      else {
+        devouredRowsToAdd.push(createDevouredRow(burgers[i]));
+        console.log("burger is devoured array", devouredRowsToAdd);
+        $burgerDevouredContainer.append(devouredRowsToAdd);
+      }  
     }
-    $burgerContainer.append(rowsToAdd);
   }
 
   // This function grabs burgers from the database and updates the view
   function getBurgers() {
     $.get("/api/burgers", function(data) {
+      console.log('data within getBurgers', data)
       burgers = data;
       initializeRows();
     });
@@ -33,21 +45,30 @@ $(document).ready(function() {
 
   // Toggles devoured status
   function toggleDevoured(event) {
+    console.log('we tried to devour')
     event.stopPropagation();
-    var burgers = $(this).parent().data("burgers");
-    burgers.devoured = !burger.devoured;
-    updateBurgers(burgers);
+    var burgerToDevour = $(this).parent().data("burgers");
+    burgerToDevour.devoured = true;
+    console.log('burger after being devoured', burgerToDevour)
+    updateBurgers(burgerToDevour);
   }
 
  
 
   // This function updates a burgers in our database
-  function updateBurgers(burgers) {
+  function updateBurgers(burgerToDevour) {
+    console.log('burgerToDevour within updateBurgers', burgerToDevour)
     $.ajax({
       method: "PUT",
       url: "/api/burgers",
-      data: burgers
-    }).then(getBurgers);
+      data: burgerToDevour
+    }).then(function() {
+      $.get("/api/burgers", function(data) {
+        console.log('data within getBurgers', data)
+        burgers = data;
+        initializeRows();
+      });
+    });
   }
 
  
@@ -59,34 +80,41 @@ $(document).ready(function() {
         "<span>",
         burgers.title,
         "</span>",
-        "<button class='delete btn btn-danger'>Devour It!</button>",
+        "<button class='delete btn btn-danger align-middle float-right p-0'>Devour It!</button>",
         "</li>"
       ].join("")
     );
 
-    $newInputRow.find("button.delete").data("id", burgers.id);
+    // $newInputRow.find("button.delete").data("id", burgers.id);
     $newInputRow.data("burgers", burgers);
     // if (burgers.devoured) {
     //   $newInputRow.find("span").css("text-decoration", "line-through");
     // }
     return $newInputRow;
   }
-  // This function inserts a new burgers into our database and then updates the view
+  function createDevouredRow(burgers) {
+    var $newInputRow = $(
+      [
+        "<li class='list-group-item burgers-item'>",
+        "<span>",
+        burgers.title,
+        ": Devoured it!", 
+        "</span>",
+        "</li>"
+      ].join("")
+    );
+    $newInputRow.data("burgers", burgers);
+    return $newInputRow;
+  }
+  // This function inserts a new burger into our database and then updates the view
   function insertBurgers(event) {
     event.preventDefault();
     var burgers = {
       title: $newItemInput.val().trim(),
-      // devoured: false
+      devoured: false
     };
-    console.log($newItemInput);
+    console.log('burger within insertBurgers fuction:', burgers);
     $.post("/api/burgers", burgers, getBurgers)
     $newItemInput.val("");
-      // .then(function(){
-      //   var row = $("<div>");
-      //   row.addClass("burger");
-      //   row.append("<p>" + newBurgers.body + "</p>");
-      //   $("#burger-container").append(row);
-      // });
-  }
-
+   }
 });

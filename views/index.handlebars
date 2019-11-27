@@ -1,24 +1,24 @@
 	<div class="container">
-	<div class="jumbotron">
-		<div class="col-md-6 offset-md-3">
+	<div class="jumbotron p-2">
+		<div class="col-md-12">
 			<h1 class="text-center">
-				<span class="fas fa-hamburger fa-3x  text-center"></span>
+				<span class="fas fa-hamburger fa-3x"></span>
 			</h1></br>
 			<h1 class="text-center">Eat Da Burger!</h1>
 		</div>
 	</div>
 		<div class="row">
-			<div class="col-md-6 offset-md-3">
+			<div class="col-md-5">
 				<ul class="list-group burgers-list">
 					<li class="list-group-item new-item">
 						<form id="burger-form">
 					<div class="container">
 							<div class="row">
-								<div class="col-7bi">
-									<input class="new-item form-control" id="burgerInput" placeholder="Add a burger" type="text" />
+								<div class="col-10 mx-auto">
+									<input class="new-item form-control"   id="burgerInput" placeholder="Add a burger" type="text" />
 								</div>
 							<div class="col-2">
-								<button type="submit" class="btn btn-success" id="submit">Add a burger</button>
+								<button type="submit" class="btn btn-success float-right" id="submit">Add</button>
 							</div>
 						</div>
 					</div>
@@ -26,6 +26,15 @@
 					</li>
 					<span class="burger-container">
 					</span>
+				</ul>
+			</div>
+			<div class="col-md-5 offset-2">
+				<ul class="list-group burgers-list">
+					<li class="list-group-item new-item">
+					<span class="burger-devoured-container">
+
+					</span>
+					</li>
 				</ul>
 			</div>
 		</div>

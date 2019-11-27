@@ -17,7 +17,7 @@ module.exports = function(app) {
  // findAll returns all entries for a table when used with no options
     db.Burger.findAll({}).then(function(dbBurger) {
 // We have access to the table data as an argument inside of the callback function
-// return res.json(dbBurgers);
+// return res.json(dbBurger);
       res.json(dbBurger);
     });
   });
@@ -28,7 +28,7 @@ module.exports = function(app) {
 // and complete property (req.body)
     db.Burger.create({
       title: req.body.title,
-      devoured: req.body.devoured
+      devoured: false
     }).then(function(dbBurger) {
  // We have access to the new burgers as an argument inside of the callback function
       res.json(dbBurger);
@@ -47,7 +47,7 @@ module.exports = function(app) {
     // we use where to describe which objects we want to update
     db.Burger.update({
       title: req.body.title,
-      // complete: req.body.complete
+      devoured: req.body.devoured
     }, {
       where: {
         id: req.body.id
