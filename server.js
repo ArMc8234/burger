@@ -7,7 +7,7 @@ var exphbs = require("express-handlebars");
 //Set up Express Server
 //=====================================
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 
 //Require the models to sync to the SQL database
 var db = require("./models");
