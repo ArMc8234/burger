@@ -2,7 +2,7 @@
   "name": "burger",
   "version": "1.0.0",
   "engines": {
-    "node": "12.11.1"
+    "node": "10.16.0"
   },
   "description": "An app that uses sql to capture user input then display the contents in one of two html tables",
   "main": "server.js",
