@@ -12,15 +12,15 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
  // GET route for getting all of the table contents
-
-    app.get("/api/burgers", function(req, res) {
- // findAll returns all entries for a table when used with no options
-    db.Burger.findAll({}).then(function(dbBurger) {
+ app.get("/api/burgers", function(req, res) {
+// findAll returns all entries for a table when used with no options
+ db.Burger.findAll({}).then(function(dbBurger) {
 // We have access to the table data as an argument inside of the callback function
 // return res.json(dbBurger);
-      res.json(dbBurger);
-    });
-  });
+   res.json(dbBurger);
+ });
+});
+
 // POST route for saving a new table entry
   app.post("/api/burgers", function(req, res) {
 // create takes an argument of an object describing the item we want to
