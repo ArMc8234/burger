@@ -1,6 +1,5 @@
 //Dependencies
 //=====================================
-require('dotenv').config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 
