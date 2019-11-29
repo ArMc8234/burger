@@ -4,15 +4,8 @@
   "description": "An app that uses sql to capture user input then display the contents in one of two html tables",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "lint": "eslint --quiet .",
-    "fix": "eslint --fix .",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
-    
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ArMc8234/burger.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "burger",
