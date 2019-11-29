@@ -1,14 +1,12 @@
 {
   "name": "burger",
   "version": "1.0.0",
-  "engines": {
-    "node": "10.16.0"
-  },
+
   "description": "An app that uses sql to capture user input then display the contents in one of two html tables",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
